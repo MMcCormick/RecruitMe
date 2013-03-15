@@ -13,13 +13,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     rtoken = request.env["omniauth.auth"]['credentials']['token']
     rsecret = request.env["omniauth.auth"]['credentials']['secret']
 
-    pin = /(.*)token=(.*)/.match(client.request_token.authorize_url)[2]
-
     # then fetch your access keys
-    client.authorize_from_request(rtoken, rsecret, params[:oauth_verifier])
+    client.authorize_from_access(rtoken, rsecret)
 
-    # or authorize from previously fetched access keys
-    # c.authorize_from_access("OU812", "8675309")
+    foo = client.profile(:fields => ['picture-url', 'headline', :positions])
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
