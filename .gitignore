@@ -13,3 +13,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/.idea/workspace.xml
+/.idea/vcs.xml
+/.idea/RecruitMe.iml
+/.idea/modules.xml
+/.idea/misc.xml
+/.idea/encodings.xml
+/.idea/.rakeTasks
+/.idea/.generators

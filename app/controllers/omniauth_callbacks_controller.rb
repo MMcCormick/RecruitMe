@@ -10,13 +10,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     foo = request.env["omniauth.auth"]
 
     client = LinkedIn::Client.new(ENV["LINKEDIN_CONSUMER"], ENV["LINKEDIN_SECRET"])
-    rtoken = client.request_token.token
-    rsecret = client.request_token.secret
+    rtoken = request.env["omniauth.auth"]['credentials']['token']
+    rsecret = request.env["omniauth.auth"]['credentials']['secret']
 
-    pin = client.request_token.authorize_url
+    pin = /(.*)token=(.*)/.match(client.request_token.authorize_url)[2]
 
     # then fetch your access keys
-    client.authorize_from_request(rtoken, rsecret, pin)
+    client.authorize_from_request(rtoken, rsecret, params[:oauth_verifier])
 
     # or authorize from previously fetched access keys
     # c.authorize_from_access("OU812", "8675309")
