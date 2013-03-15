@@ -230,7 +230,7 @@ Devise.setup do |config|
     ENV["LINKEDIN_SECRET"] = "3PuZe5PAppKIyXXi"
   end
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-  config.omniauth :linkedin, ENV["LINKEDIN_CONSUMER"], ENV["LINKEDIN_SECRET"]
+  config.omniauth :linkedin, ENV["LINKEDIN_CONSUMER"], ENV["LINKEDIN_SECRET"], {:scope => 'r_fullprofile,r_emailaddress'}
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
