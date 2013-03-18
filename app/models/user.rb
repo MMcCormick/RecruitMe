@@ -2,6 +2,7 @@
 #
 # Table name: users
 #
+#  country_code           :string(255)
 #  created_at             :datetime
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string(255)
@@ -11,6 +12,7 @@
 #  industry               :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
+#  location               :string(255)
 #  name                   :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime
@@ -31,24 +33,29 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :provider, :uid, :industry
+  attr_accessible :name, :provider, :uid, :industry, :location_name, :country_code
 
   has_many :positions, :dependent => :destroy
 
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user.destroy if user
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       client = LinkedIn::Client.new(ENV["LINKEDIN_CONSUMER"], ENV["LINKEDIN_SECRET"])
       client.authorize_from_access(auth.credentials.token, auth.credentials.secret)
-      profile = client.profile(:scope => "r_fullprofile", :fields => %w(id email-address formatted-name positions industry))
-
-      user = User.create(name:profile['formatted-name'],
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:profile['email-address'],
-                         password:Devise.friendly_token[0,20],
-                         industry:profile['industry']
-      )
+      profile = client.profile(:scope => "r_fullprofile", :fields => %w(id email-address formatted-name positions industry location))
+      user_fields = {
+        name: profile['formatted-name'],
+        provider: auth.provider,
+        uid: auth.uid,
+        email: profile['email-address'],
+        password: Devise.friendly_token[0,20],
+        industry: profile['industry']
+      }
+      user_fields[:location_name] = profile['location']['name'] if profile['location']
+      user_fields[:country_code] = profile['location']['country']['code'] if profile['location'] and profile['location']['country']
+      user = User.create(user_fields)
       if user.persisted?
         profile['positions']['all'].each do |p|
           c = p['company']

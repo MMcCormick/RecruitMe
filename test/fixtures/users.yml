@@ -2,6 +2,7 @@
 #
 # Table name: users
 #
+#  country_code           :string(255)
 #  created_at             :datetime
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string(255)
@@ -11,6 +12,7 @@
 #  industry               :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
+#  location               :string(255)
 #  name                   :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime

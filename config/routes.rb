@@ -1,12 +1,13 @@
 RecruitMe::Application.routes.draw do
 
   devise_for :users, :skip => [:sessions, :registrations], :controllers => { :omniauth_callbacks => :omniauth_callbacks }
+  get '/users/auth/:provider' => 'omniauth_callbacks#passthru'
   devise_scope :user do
     get 'sign_in', :to => 'home#index', :as => :new_user_session
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
     get 'sign_up', :to => 'home#index', :as => :new_user_registration
+    get 'users/:id', :to => 'users#show', :as => :user
   end
-  get '/users/auth/:provider' => 'omniauth_callbacks#passthru'
 
   root :to => "home#index"
 

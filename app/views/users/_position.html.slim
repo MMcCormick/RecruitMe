@@ -1,0 +1,9 @@
+li.position
+  .left-side
+    .title= position.title
+    .size= position.company_size
+    .industry= position.company_industry
+  .right-side
+    .time= time_in_months(position.total_time)
+    .current= yes_or_no(position.is_current)
+  .clear

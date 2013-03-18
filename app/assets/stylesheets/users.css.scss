@@ -1,0 +1,14 @@
+#users-show {
+  .position {
+    margin: 10px 0;
+    overflow: hidden;
+    display: block;
+    .left-side {
+      float: left;
+    }
+    .right-side {
+      float: right;
+      text-align: right;
+    }
+  }
+}

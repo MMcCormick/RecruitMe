@@ -1,0 +1,20 @@
+- if @user.location_name
+  h1= @user.location_name
+  .sub-header
+    /div
+      /| Willing to move?
+      /span yes_or_no(@user.willing_to_move)
+    - if @user.industry
+      div
+        | Industry:
+        span= @user.industry
+
+  div Interest level:
+  ul.button-bar
+    li.button Active
+    li.button Passive
+    li.button Dream Job Only
+
+  h3 Positions
+  ul.positions
+    = render :partial => 'position', :collection => @user.positions
