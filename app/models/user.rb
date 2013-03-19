@@ -42,9 +42,12 @@ class User < ActiveRecord::Base
     user.destroy if user
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
+      # Use Linkedin gem to get authenticated user's full profile
       client = LinkedIn::Client.new(ENV["LINKEDIN_CONSUMER"], ENV["LINKEDIN_SECRET"])
       client.authorize_from_access(auth.credentials.token, auth.credentials.secret)
       profile = client.profile(:scope => "r_fullprofile", :fields => %w(id email-address formatted-name positions industry location))
+
+      # Hash of user fields
       user_fields = {
         name: profile['formatted-name'],
         provider: auth.provider,
@@ -53,12 +56,16 @@ class User < ActiveRecord::Base
         password: Devise.friendly_token[0,20],
         industry: profile['industry']
       }
+      # Fields that would cause trouble if top level hash were empty
       user_fields[:location_name] = profile['location']['name'] if profile['location']
       user_fields[:country_code] = profile['location']['country']['code'] if profile['location'] and profile['location']['country']
       user = User.create(user_fields)
+
+      # If the user saved, get their positions
       if user.persisted?
         profile['positions']['all'].each do |p|
           c = p['company']
+          # Hash of position fields
           params = {company_uid: c['id'],
                     company_industry: c['industry'],
                     company_name: c['name'],
@@ -68,6 +75,7 @@ class User < ActiveRecord::Base
                     title: p['title'],
                     is_current: p['is_current'],
           }
+          # Fields that would cause trouble if top level hash were empty
           params[:end_date] = DateTime.new(p['end_date']['year'], p['end_date']['month']) if p['end_date']
           params[:start_date] = DateTime.new(p['start_date']['year'], p['start_date']['month']) if p['start_date']
           user.positions.create(params)
