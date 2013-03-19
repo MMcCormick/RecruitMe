@@ -3,8 +3,8 @@ module ApplicationHelper
     bool ? "Yes" : "No"
   end
 
-  def time_in_months(seconds)
-    days = seconds / 60 / 60 / 24 + 30
+  def time_in_months(days)
+    days = days + 30 # so we don't have 0 months (aka round up)
     string = ""
 
     if days > 365

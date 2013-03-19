@@ -1,0 +1,10 @@
+= simple_form_for @user do |f|
+  = f.input :name
+  = f.input :email
+  = f.input :industry
+  = f.input :location_name
+  = f.label "Interest Level"
+  .checkboxes
+    == f.collection_radio_buttons :interest_level, ['Active', 'Passive', 'Dream Job Only'], :to_s, :to_s do |b|
+      - b.label { b.radio_button + b.text.html_safe }
+  = f.button :submit

@@ -1,0 +1,9 @@
+= simple_form_for @position do |f|
+  = f.input :title
+  = f.input :company_industry
+  = f.input :company_size
+  = f.input :company_type
+  = f.input :is_current, label: "Current Position?"
+  = f.input :start_date, as: :date, order: [:month, :year]
+  = f.input :end_date, as: :date, order: [:month, :year]
+  = f.button :submit

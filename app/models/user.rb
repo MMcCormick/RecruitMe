@@ -32,15 +32,18 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:linkedin]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :provider, :uid, :industry, :location_name, :country_code
+  attr_protected
+
+  attr_accessor :interest_levels
+
+  validates_inclusion_of :interest_level, :in => ['Active', 'Passive', 'Dream Job Only'], :allow_blank => true
 
   has_many :positions, :dependent => :destroy
 
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     # Just for testing
-    #user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    #user.destroy if user
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user.destroy if user
 
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
@@ -75,7 +78,8 @@ class User < ActiveRecord::Base
                     company_type: c['type'],
                     uid: p['id'],
                     title: p['title'],
-                    is_current: p['is_current'],
+                    summary: p['summary'],
+                    is_current: p['is_current']
           }
           # Fields that would cause trouble if top level hash were empty
           params[:end_date] = DateTime.new(p['end_date']['year'], p['end_date']['month']) if p['end_date']

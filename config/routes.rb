@@ -7,7 +7,14 @@ RecruitMe::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
     get 'sign_up', :to => 'home#index', :as => :new_user_registration
     get 'users/:id', :to => 'users#show', :as => :user
+    #get 'users/:id/edit', :to => 'users#edit', :as => :edit_user
   end
+
+  resources :users
+
+  get 'welcome', :to => 'users#step_1', :as => :step_1
+
+  resources :position
 
   root :to => "home#index"
 

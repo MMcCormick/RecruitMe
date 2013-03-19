@@ -12,6 +12,8 @@ gem 'omniauth-linkedin'
 gem 'linkedin'
 gem 'slim'
 gem 'zurb-foundation', '~> 3.2.5'
+gem 'simple_form'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,6 +22,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'annotate'
+  gem 'slim-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

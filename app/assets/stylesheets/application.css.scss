@@ -19,4 +19,15 @@
   padding: 40px 0;
 }
 
-  @import "users"
+.edit-bar {
+  margin-bottom: 10px;
+}
+form {
+  .checkboxes,
+  .input.date,
+  .input.boolean {
+    margin-bottom: 12px;
+  }
+}
+
+  @import "users";

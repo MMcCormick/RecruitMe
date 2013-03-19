@@ -11,20 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318193023) do
+ActiveRecord::Schema.define(:version => 20130319212342) do
 
   create_table "positions", :force => true do |t|
-    t.integer  "company_uid"
-    t.integer  "uid"
-    t.integer  "user_id"
-    t.string   "company_industry"
-    t.string   "company_name"
-    t.string   "company_type"
-    t.string   "company_size"
-    t.string   "title"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.boolean  "is_current"
+    t.integer "company_uid"
+    t.integer "uid"
+    t.integer "user_id"
+    t.string  "company_industry"
+    t.string  "company_name"
+    t.string  "company_type"
+    t.string  "company_size"
+    t.string  "title"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.boolean "is_current"
+    t.text    "summary"
   end
 
   create_table "users", :force => true do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130318193023) do
     t.string   "industry"
     t.string   "location_name"
     t.string   "country_code"
+    t.string   "interest_level"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -22,9 +22,9 @@ class Position < ActiveRecord::Base
   belongs_to :user
 
   def total_time
-    latest_date = end_date ? end_date : Time.now
+    latest_date = end_date ? end_date : Date.today
     if start_date and latest_date
-      (latest_date - start_date).to_int
+      (latest_date - start_date).to_i
     else
       nil
     end

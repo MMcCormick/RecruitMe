@@ -1,14 +1,49 @@
 #users-show {
+  .basic-info {
+    padding: 10px;
+    background: #EEE;
+    .interest-level {
+      h3 {
+      }
+      .button-bar {
+        width: 100%;
+        margin-bottom: 0;
+        .button {
+          width: 33%;
+          /* Fallback for web browsers that doesn't support RGBa */
+          background: rgb(43, 166, 203);
+          background: rgba(43, 166, 203, 0.4);
+          border: 1px solid rgb(30, 114, 140);
+          border: 1px solid rgba(30, 114, 140, 0.4);
+          &.active {
+            background: rgb(43, 166, 203);
+          }
+        }
+      }
+    }
+  }
   .position {
-    margin: 10px 0;
+    margin: 5px 0;
+    padding: 5px 10px;
     overflow: hidden;
     display: block;
+    background: #EEE;
+    .edit-bar {
+      margin-bottom: 0px;
+    }
     .left-side {
       float: left;
     }
     .right-side {
       float: right;
       text-align: right;
+    }
+    .edit-bar {
+      clear: both;
+      >div {
+        display: inline-block;
+        margin: 0 20px 0 0;
+      }
     }
   }
 }
