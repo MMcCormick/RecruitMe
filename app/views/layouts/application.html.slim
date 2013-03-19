@@ -8,6 +8,13 @@ html
 
   body id="#{params[:controller]}-#{params[:action]}"
     .container
-      p.notice= notice
-      p.alert= alert
+      - if notice
+        .alert-box
+          = notice
+          a href="" class="close" &times;
+      - if alert
+        .alert.alert-box
+          = alert
+          a href="" class="close" &times;
+
       = yield

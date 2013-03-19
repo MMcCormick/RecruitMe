@@ -38,8 +38,10 @@ class User < ActiveRecord::Base
   has_many :positions, :dependent => :destroy
 
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    user.destroy if user
+    # Just for testing
+    #user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    #user.destroy if user
+
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       # Use Linkedin gem to get authenticated user's full profile
