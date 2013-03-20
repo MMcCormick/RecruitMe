@@ -35,12 +35,13 @@ class PositionsController < ApplicationController
   # GET /positions/1/edit
   def edit
     @position = Position.find(params[:id])
+    authorize! :update, @position
   end
 
   # POST /positions
   # POST /positions.json
   def create
-    @position = Position.new(params[:position])
+    @position = current_user.positions.new(params[:position])
 
     respond_to do |format|
       if @position.save
@@ -57,6 +58,7 @@ class PositionsController < ApplicationController
   # PUT /positions/1.json
   def update
     @position = Position.find(params[:id])
+    authorize! :update, @position
 
     respond_to do |format|
       if @position.update_attributes(params[:position])
@@ -73,6 +75,8 @@ class PositionsController < ApplicationController
   # DELETE /positions/1.json
   def destroy
     @position = Position.find(params[:id])
+    authorize! :destroy, @position
+
     @position.destroy
 
     respond_to do |format|
