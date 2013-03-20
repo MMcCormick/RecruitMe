@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
 
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     # Just for testing
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    user.destroy if user
+    #user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    #user.destroy if user
 
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
