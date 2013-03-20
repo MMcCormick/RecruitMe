@@ -1,27 +1,25 @@
 class PositionsController < ApplicationController
-  before_filter authorize_user!
-
   # GET /positions
   # GET /positions.json
-  def index
-    @positions = Position.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @positions }
-    end
-  end
+  #def index
+  #  @positions = Position.all
+  #
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @positions }
+  #  end
+  #end
 
   # GET /positions/1
   # GET /positions/1.json
-  def show
-    @position = Position.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @position }
-    end
-  end
+  #def show
+  #  @position = Position.find(params[:id])
+  #
+  #  respond_to do |format|
+  #    format.html # show.html.erb
+  #    format.json { render json: @position }
+  #  end
+  #end
 
   # GET /positions/new
   # GET /positions/new.json
@@ -37,12 +35,13 @@ class PositionsController < ApplicationController
   # GET /positions/1/edit
   def edit
     @position = Position.find(params[:id])
+    authorize! :update, @position
   end
 
   # POST /positions
   # POST /positions.json
   def create
-    @position = Position.new(params[:position])
+    @position = current_user.positions.new(params[:position])
 
     respond_to do |format|
       if @position.save
@@ -59,6 +58,7 @@ class PositionsController < ApplicationController
   # PUT /positions/1.json
   def update
     @position = Position.find(params[:id])
+    authorize! :update, @position
 
     respond_to do |format|
       if @position.update_attributes(params[:position])
@@ -75,6 +75,8 @@ class PositionsController < ApplicationController
   # DELETE /positions/1.json
   def destroy
     @position = Position.find(params[:id])
+    authorize! :destroy, @position
+
     @position.destroy
 
     respond_to do |format|

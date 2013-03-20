@@ -5,8 +5,10 @@ li.position
     .size= position.company_size
     .type= position.company_type
   .right-side
-    .time= time_in_months(position.total_time)
+    - if position.total_time
+      .time= time_in_months(position.total_time)
     .current= yes_or_no(position.is_current)
-  .edit-bar
-    div = link_to 'Edit', edit_position_path(position)
-    div = link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete
+  - if @user == current_user
+    .edit-bar
+      div = link_to 'Edit', edit_position_path(position)
+      div = link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete

@@ -10,9 +10,10 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  id                     :integer          not null, primary key
 #  industry               :string(255)
+#  interest_level         :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
-#  location               :string(255)
+#  location_name          :string(255)
 #  name                   :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime
@@ -24,6 +25,9 @@
 #
 
 class User < ActiveRecord::Base
+
+  @interest_levels = ['Active', 'Passive', 'Dream Job Only', 'Hidden']
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -34,11 +38,13 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_protected
 
-  attr_accessor :interest_levels
-
-  validates_inclusion_of :interest_level, :in => ['Active', 'Passive', 'Dream Job Only'], :allow_blank => true
+  validates_inclusion_of :interest_level, :in => @interest_levels, :allow_blank => true
 
   has_many :positions, :dependent => :destroy
+
+  def self.interest_levels
+    @interest_levels
+  end
 
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     # Just for testing

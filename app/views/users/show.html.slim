@@ -1,8 +1,9 @@
 - if @user.location_name
   h1= @user.location_name
 .basic-info
-  .edit-bar
-    div = link_to 'Edit Basic Info', edit_user_path(@user)
+  - if @user == current_user
+    .edit-bar
+      div = link_to 'Edit Basic Info', edit_user_path(@user)
   .sub-header
     /div
       /| Willing to move?
@@ -15,9 +16,12 @@
   .interest-level
     h3 Interest level
     ul.button-bar
-      - ['Active', 'Passive', 'Dream Job Only'].each do |t|
+      - User.interest_levels.each do |t|
         li.button class="#{'active' if t == @user.interest_level}" = t
 
 h3 Positions
+- if @user == current_user
+  .edit-bar
+    = link_to "New Position", new_position_path
 ul.positions
   = render :partial => 'positions/position', :collection => @user.positions

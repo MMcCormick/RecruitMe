@@ -14,7 +14,7 @@ RecruitMe::Application.routes.draw do
 
   get 'welcome', :to => 'users#step_1', :as => :step_1
 
-  resources :position
+  resources :positions
 
   root :to => "home#index"
 

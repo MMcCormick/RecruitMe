@@ -1,16 +1,14 @@
-#positions-edit {
-  form {
-    .date {
-      #position_start_date_2i,
-      #position_end_date_2i {
-        float: left;
-        width: 150px;
-      }
-      #position_start_date_1i,
-      #position_end_date_1i {
-        width: 75px;
-        margin-left: 20px;
-      }
+#new_position {
+  .date {
+    #position_start_date_2i,
+    #position_end_date_2i {
+      float: left;
+      width: 150px;
+    }
+    #position_start_date_1i,
+    #position_end_date_1i {
+      width: 75px;
+      margin-left: 20px;
     }
   }
 }
