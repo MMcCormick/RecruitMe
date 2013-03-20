@@ -10,9 +10,10 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  id                     :integer          not null, primary key
 #  industry               :string(255)
+#  interest_level         :string(255)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
-#  location               :string(255)
+#  location_name          :string(255)
 #  name                   :string(255)
 #  provider               :string(255)
 #  remember_created_at    :datetime

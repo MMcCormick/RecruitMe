@@ -7,10 +7,11 @@
 #  company_size     :string(255)
 #  company_type     :string(255)
 #  company_uid      :integer
-#  end_date         :datetime
+#  end_date         :date
 #  id               :integer          not null, primary key
 #  is_current       :boolean
-#  start_date       :datetime
+#  start_date       :date
+#  summary          :text
 #  title            :string(255)
 #  uid              :integer
 #  user_id          :integer
