@@ -2,7 +2,6 @@
 
   #sidebar {
 
-
     .bubbles {
       margin: 40px 0 0 10px;
     }
@@ -89,5 +88,14 @@
       }
     }
   }
+}
 
+.edit_user {
+  .checkboxes {
+    margin: 10px 0;
+  }
+  .input,
+  .checkboxes {
+    margin-bottom: 15px;
+  }
 }
