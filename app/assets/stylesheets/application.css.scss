@@ -51,11 +51,18 @@ div.alert-box {
   margin-bottom: 10px;
 }
 
+select {
+  width: auto;
+}
+
 form {
   .checkboxes,
   .input.date,
   .input.boolean {
     margin-bottom: 12px;
+  }
+  .input {
+    margin-bottom: 10px;
   }
 }
 
