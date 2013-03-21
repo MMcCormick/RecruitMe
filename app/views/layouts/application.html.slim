@@ -15,9 +15,9 @@ html
           .menu
             ul
               li
-                a href=user_path My Profile
+                a href=user_path(current_user) My Profile
               li
-                a href=edit_user_path Edit Profile
+                a href=edit_user_path(current_user) Edit Profile
               li.logout
                 a href=destroy_user_session_url Logout
               li.divider
