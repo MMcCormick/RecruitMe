@@ -6,6 +6,6 @@
   - unless @user.interest_level
     = f.label "Interest Level"
     .checkboxes
-      == f.collection_radio_buttons :interest_level, User., :to_s, :to_s do |b|
+      == f.collection_radio_buttons :interest_level, User.interest_levels, :to_s, :to_s do |b|
         - b.label { b.radio_button + b.text.html_safe }
   = f.button :submit

@@ -30,7 +30,7 @@ body {
 
   &.fullscreen {
     .bg {
-      background-image: image-url('skyline-compressed.jpg');
+      background-image: image-url('skyline2.jpg');
       background-position: 50% bottom;
       position: fixed;
       top: 0;
@@ -40,6 +40,11 @@ body {
       z-index: -1;
     }
   }
+}
+
+div.alert-box {
+  background: $green;
+  margin-bottom: 10px;
 }
 
 .edit-bar {
@@ -65,6 +70,9 @@ ul {
     width: 960px;
     margin: auto;
   }
+}
+#main-container .inner {
+  padding-top: 10px;
 }
 
 #mast-nav {

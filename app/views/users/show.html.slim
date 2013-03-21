@@ -13,7 +13,7 @@
 
 .user-header
   h1 Codename: Electric Mango
-  .status == "I am <b>ACTIVELY</b> looking for a job."
+  .status == "I am <b>#{}</b> looking for a job."
 
 - if @user == current_user
   .edit-bar
@@ -21,7 +21,7 @@
 
 .section.positions
   .head
-    h3 Positions
+    h3 Experience
     - if @user == current_user
       .edit-bar
         = link_to "New Position", new_position_path
