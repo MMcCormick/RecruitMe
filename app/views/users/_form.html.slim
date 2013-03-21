@@ -7,7 +7,7 @@
       .content
         = f.input :name unless @user.name && defined?(blank_only)
         = f.input :email unless @user.email
-        = f.input :industry unless @user.industry && defined?(blank_only)
+        = f.input :industry, collection: User.industries unless @user.industry && defined?(blank_only)
         = f.input :location_name unless @user.location_name && defined?(blank_only)
 
   .section
