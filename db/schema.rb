@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319212342) do
+ActiveRecord::Schema.define(:version => 20130321182838) do
+
+  create_table "codenames", :force => true do |t|
+    t.string  "name"
+    t.boolean "used", :default => false
+  end
+
+  add_index "codenames", ["name"], :name => "index_codenames_on_name", :unique => true
 
   create_table "positions", :force => true do |t|
     t.integer "company_uid"
@@ -32,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20130319212342) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -48,8 +55,10 @@ ActiveRecord::Schema.define(:version => 20130319212342) do
     t.string   "location_name"
     t.string   "country_code"
     t.string   "interest_level"
+    t.string   "codename"
   end
 
+  add_index "users", ["codename"], :name => "index_users_on_codename"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

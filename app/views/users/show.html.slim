@@ -12,7 +12,7 @@
           = @user.location_name
 
 .user-header
-  h1 Codename: Electric Mango
+  h1 Codename: #{@user.codename}
   .status == "I am <b>ACTIVELY</b> looking for a job."
 
 - if @user == current_user

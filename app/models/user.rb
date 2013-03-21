@@ -42,8 +42,20 @@ class User < ActiveRecord::Base
 
   has_many :positions, :dependent => :destroy
 
+  after_create :assign_codename
+
   def first_name
     name.split(' ').first
+  end
+
+  def assign_codename
+    new_codename = Codename.where(:used => false).order("RANDOM()").first
+    if new_codename
+      self.codename = new_codename.name
+      save
+      new_codename.used = true
+      new_codename.save
+    end
   end
 
   def self.interest_levels
