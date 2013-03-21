@@ -228,6 +228,9 @@ Devise.setup do |config|
   if Rails.env == "development"
     ENV["LINKEDIN_CONSUMER"] = "1y5848a5n9sl"
     ENV["LINKEDIN_SECRET"] = "3PuZe5PAppKIyXXi"
+  else
+    ENV["LINKEDIN_CONSUMER"] = "6uc4wncabm0q"
+    ENV["LINKEDIN_SECRET"] = "ZmnW4PR96mzqKBNM"
   end
   config.omniauth :linkedin, ENV["LINKEDIN_CONSUMER"], ENV["LINKEDIN_SECRET"], {:scope => 'r_fullprofile,r_emailaddress'}
 
