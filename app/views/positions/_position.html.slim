@@ -1,13 +1,11 @@
-li.position
-  .left-side
-    .title= position.title
-    .industry= position.company_industry
-    .size= position.company_size
-    .type= position.company_type
-  .right-side
+li
+  .description This is the position one liner
+  .bottom
     - if position.total_time
-      .time= time_in_months(position.total_time)
-    .current= yes_or_no(position.is_current)
+      span.time= time_in_months(position.total_time)
+    - if position.is_current
+      .current currently employed
+
   - if @user == current_user
     .edit-bar
       div = link_to 'Edit', edit_position_path(position)

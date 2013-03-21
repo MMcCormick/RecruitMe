@@ -20,10 +20,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'annotate'
   gem 'slim-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
+  gem 'font-awesome-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 

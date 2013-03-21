@@ -1,0 +1,17 @@
+DOCTYPE html
+html
+  = render :partial => "shared/head"
+
+  body.fullscreen.cover-image id="#{params[:controller]}-#{params[:action]}"
+
+    #main-container
+      - if notice
+        .alert-box
+          = notice
+          a href="" class="close" &times;
+      - if alert
+        .alert.alert-box
+          = alert
+          a href="" class="close" &times;
+
+      = yield

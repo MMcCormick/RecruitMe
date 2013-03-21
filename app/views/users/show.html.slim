@@ -1,27 +1,30 @@
-- if @user.location_name
-  h1= @user.location_name
-.basic-info
-  - if @user == current_user
-    .edit-bar
-      div = link_to 'Edit Basic Info', edit_user_path(@user)
-  .sub-header
-    /div
-      /| Willing to move?
-      /span yes_or_no(@user.willing_to_move)
+- content_for :sidebar do
+
+  .bubbles
     - if @user.industry
-      div
-        | Industry:
-        span= " #{@user.industry}"
+      .industry
+        .bubble
+          = @user.industry
 
-  .interest-level
-    h3 Interest level
-    ul.button-bar
-      - User.interest_levels.each do |t|
-        li.button class="#{'active' if t == @user.interest_level}" = t
+    - if @user.location_name
+      .location
+        .bubble
+          = @user.location_name
 
-h3 Positions
+.user-header
+  h1 Codename: Electric Mango
+  .status == "I am <b>ACTIVELY</b> looking for a job."
+
 - if @user == current_user
   .edit-bar
-    = link_to "New Position", new_position_path
-ul.positions
-  = render :partial => 'positions/position', :collection => @user.positions
+    div = link_to 'Edit Basic Info', edit_user_path(@user)
+
+.section.positions
+  .head
+    h3 Positions
+    - if @user == current_user
+      .edit-bar
+        = link_to "New Position", new_position_path
+  .content
+    ul
+      = render :partial => 'positions/position', :collection => @user.positions
