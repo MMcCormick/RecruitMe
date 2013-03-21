@@ -43,6 +43,8 @@ body {
 }
 
 div.alert-box {
+  @include border-radius(0);
+  @include text-shadow(none);
   background: $green;
   margin-bottom: 10px;
 }
@@ -55,11 +57,55 @@ select {
   width: auto;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+select,
+textarea {
+  @include box-shadow(none);
+  @include border-radius(0);
+  padding: 7px 8px;
+  font-size: 16px;
+  height: auto;
+  width: 400px;
+  border: 1px solid #CCC;
+}
+
 form {
+  input {
+
+  }
+  textarea {
+
+  }
+  select {
+    display: block;
+  }
+  label {
+
+    &.string,
+    &.select {
+      background: #CCC;
+      color: #333;
+      display: inline-block;
+      margin: 0;
+      padding: 5px 8px;
+      font-size: 16px;
+    }
+  }
   .checkboxes,
   .input.date,
   .input.boolean {
     margin-bottom: 12px;
+  }
+  .checkboxes {
   }
   .input {
     margin-bottom: 10px;
@@ -91,7 +137,7 @@ ul {
   .brand {
     font-weight: bold;
     font-size: 26px;
-    padding: 10px 0 10px 30px;
+    padding: 10px 0 10px 20px;
     display: inline-block;
     color: #FFF;
   }
@@ -181,7 +227,10 @@ ul {
 }
 
 #main-content {
-  padding-left: $sidebar-width;
+
+  &.with-sidebar {
+    padding-left: $sidebar-width;
+  }
 }
 
 .cover-image {
@@ -191,6 +240,38 @@ ul {
   display: block;
   height: 100%;
   width: 100%;
+}
+
+.centered-sections {
+  text-align: center;
+
+  .top-help {
+    color: $red;
+    font-size: 16px;
+  }
+  .section {
+    margin: 0 0 50px 0;
+
+    .head {
+      border-bottom: 1px solid #333;
+      margin: 0 auto 40px auto;
+      width: 400px;
+
+      .name {
+        position: relative;
+        font-size: 24px;
+        position: relative;
+        bottom: -9px;
+        background: $body-bg-color;
+        padding: 0 15px;
+        display: inline-block;
+      }
+    }
+    .content {
+      text-align: left;
+      display: inline-block;
+    }
+  }
 }
 
 @import "splash";
