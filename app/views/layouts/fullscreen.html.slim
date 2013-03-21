@@ -2,7 +2,7 @@ DOCTYPE html
 html
   = render :partial => "shared/head"
 
-  body.fullscreen.cover-image id="#{params[:controller]}-#{params[:action]}"
+  body.fullscreen id="#{params[:controller]}-#{params[:action]}"
 
     #main-container
       - if notice
@@ -15,3 +15,8 @@ html
           a href="" class="close" &times;
 
       = yield
+
+
+    .bg.cover-image
+
+  = javascript_include_tag "application"

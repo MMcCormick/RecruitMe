@@ -6,7 +6,7 @@ html
 
     #mast-nav
       .inner
-        a.brand href='\' RecruitMe
+        a.brand href=root_path RecruitMe
         span.alpha Alpha
         .dropdown
           .name
@@ -40,3 +40,5 @@ html
               a href="" class="close" &times;
 
           = yield
+
+    = javascript_include_tag "application"

@@ -1,0 +1,53 @@
+#home-index {
+  padding: 50px 0 20px 0;
+}
+
+.splash-container {
+  text-align: center;
+  width: 750px;
+  margin: 0 auto;
+  border: 2px dotted #C3C3BC;
+  padding: 30px 15px 0 15px;
+
+  h1 {
+    font-size: 64px;
+    font-weight: normal;
+    margin: 0;
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 5px;
+  }
+  .linkedin {
+    background: $linkedin-color;
+    color: #FFF;
+    display: inline-block;
+    font-size: 24px;
+    margin: 30px 0;
+    padding: 8px 20px;
+
+    &:hover {
+      background: darken($linkedin-color, 5%);
+    }
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+  }
+  .left-side {
+    float: left;
+    width: 50%;
+    text-align: right;
+    padding: 0 15px;
+  }
+  .right-side {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    padding: 0 15px;
+  }
+  .profile-preview {
+    margin: 20px 0 -3px 0;
+  }
+}

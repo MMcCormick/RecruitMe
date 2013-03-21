@@ -29,8 +29,16 @@ body {
   height: 100%;
 
   &.fullscreen {
-    background-image: image-url('skyline-compressed.jpg');
-    background-position: 50% bottom;
+    .bg {
+      background-image: image-url('skyline-compressed.jpg');
+      background-position: 50% bottom;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
   }
 }
 
@@ -170,5 +178,6 @@ ul {
   width: 100%;
 }
 
+@import "splash";
 @import "positions";
 @import "users";
