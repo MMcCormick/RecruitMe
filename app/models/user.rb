@@ -27,6 +27,8 @@
 class User < ActiveRecord::Base
 
   @interest_levels = ['Active', 'Passive', 'Dream Job Only', 'Hidden']
+  @dream_salaries = [20000, 30000, 40000, 50000, 60000, 80000, 100000, 120000, 140000, 160000, 200000]
+  @company_sizes = ['1-10', '11-50', '51-100', '101-500', '501+']
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -60,6 +62,14 @@ class User < ActiveRecord::Base
 
   def self.interest_levels
     @interest_levels
+  end
+
+  def self.dream_salaries
+    @dream_salaries
+  end
+
+  def self.company_sizes
+    @company_sizes
   end
 
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)

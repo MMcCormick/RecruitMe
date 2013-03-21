@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321182838) do
+ActiveRecord::Schema.define(:version => 20130321201435) do
 
   create_table "codenames", :force => true do |t|
     t.string  "name"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20130321182838) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(:version => 20130321182838) do
     t.string   "country_code"
     t.string   "interest_level"
     t.string   "codename"
+    t.integer  "dream_salary"
+    t.boolean  "dream_move"
+    t.boolean  "dream_management"
+    t.string   "dream_size"
   end
 
   add_index "users", ["codename"], :name => "index_users_on_codename"

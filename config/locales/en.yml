@@ -2,4 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  simple_form:
+    labels:
+      user:
+        dream_salary: 'Minimum Salary'
+        dream_move: 'I would be willing to move'
+        dream_management: 'I would prefer a managerial position'
+        dream_size: 'Ideal company size'

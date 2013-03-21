@@ -1,10 +1,30 @@
 = simple_form_for @user do |f|
-  = f.input :name
-  = f.input :email
-  = f.input :industry
-  = f.input :location_name
-  = f.label "Interest Level"
-  .checkboxes
-    == f.collection_radio_buttons :interest_level, User.interest_levels, :to_s, :to_s do |b|
-      - b.label { b.radio_button + b.text.html_safe }
+  = f.input :name unless @user.name && defined?(blank_only)
+  = f.input :email unless @user.email && defined?(blank_only)
+  = f.input :industry unless @user.industry && defined?(blank_only)
+  = f.input :location_name unless @user.location_name && defined?(blank_only)
+  - unless @user.interest_level && defined?(blank_only)
+    = f.label "Interest Level"
+    .checkboxes
+      == f.collection_radio_buttons :interest_level, User.interest_levels, :to_s, :to_s do |b|
+        - b.label { b.radio_button + b.text.html_safe }
+  = f.input :dream_salary, collection: User.dream_salaries.map{|s| [number_to_currency(s), s]} unless @user.dream_salary && defined?(blank_only)
+  = f.input :dream_size, collection: User.company_sizes unless @user.dream_size && defined?(blank_only)
+  = f.input :dream_move unless @user.dream_move && defined?(blank_only)
+  = f.input :dream_management unless @user.dream_management && defined?(blank_only)
   = f.button :submit
+
+/= simple_form_for @user do |f|
+/  = f.input :name
+/  = f.input :email
+/  = f.input :industry
+/  = f.input :location_name
+/  = f.label "Interest Level"
+/  .checkboxes
+/    == f.collection_radio_buttons :interest_level, User.interest_levels, :to_s, :to_s do |b|
+/      - b.label { b.radio_button + b.text.html_safe }
+/  = f.input :dream_salary unless @user.dream_salary
+/  = f.input :dream_move unless @user.dream_move
+/  = f.input :dream_management unless @user.dream_management
+/  = f.input :dream_size unless @user.dream_size
+/  = f.button :submit

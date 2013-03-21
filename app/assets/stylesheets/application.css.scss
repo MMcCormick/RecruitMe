@@ -30,7 +30,7 @@ body {
 
   &.fullscreen {
     .bg {
-      background-image: image-url('skyline-compressed.jpg');
+      background-image: image-url('skyline2.jpg');
       background-position: 50% bottom;
       position: fixed;
       top: 0;
@@ -42,8 +42,17 @@ body {
   }
 }
 
+div.alert-box {
+  background: $green;
+  margin-bottom: 10px;
+}
+
 .edit-bar {
   margin-bottom: 10px;
+}
+
+select {
+  width: auto;
 }
 
 form {
@@ -51,6 +60,9 @@ form {
   .input.date,
   .input.boolean {
     margin-bottom: 12px;
+  }
+  .input {
+    margin-bottom: 10px;
   }
 }
 
@@ -65,6 +77,9 @@ ul {
     width: 960px;
     margin: auto;
   }
+}
+#main-container .inner {
+  padding-top: 10px;
 }
 
 #mast-nav {
