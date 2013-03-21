@@ -1,1 +1,26 @@
-= link_to "Sign in with Linkedin", user_omniauth_authorize_path(:linkedin)
+.splash-container
+  h1 RecruitMe
+  h2 Flirt with your dream job.
+  = link_to "Connect with Linkedin", user_omniauth_authorize_path(:linkedin), :class => 'linkedin'
+
+  .values
+    div
+      .left-side
+        h3 Stay Anonymous
+        p Find your dream job without risking your current one. We anonymize your entire resume.
+      .right-side
+        h3 Describe your Dream Job
+        p Indicate salary, industry, and other details so you only get contact requests
+          from companies you'd love to work at.
+
+    div
+      .left-side
+        h3 Specify your Intent
+        p Are you actively looking? Passively? Just looking for your dream job?
+          Let recruiters know your intent and find your new career faster.
+      .right-side
+        h3 Power to the Candidate
+        p Your personal details stay hidden until you accept a contact request from an employer.
+          No more spam.
+
+  = image_tag 'profile-preview.png', :class => 'profile-preview'

@@ -1,5 +1,6 @@
 class HomeController < ActionController::Base
-  layout "application"
+  layout "fullscreen"
+
   def index
   end
 

@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
 
   has_many :positions, :dependent => :destroy
 
+  def first_name
+    name.split(' ').first
+  end
+
   def self.interest_levels
     @interest_levels
   end

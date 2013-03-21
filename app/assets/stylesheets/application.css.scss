@@ -8,20 +8,44 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
+ *= require reset
  *= require foundation_and_overrides
- *= require_tree .
+ *= require font-awesome
+ *= require_self
  */
 
-.container {
-  width: 640px;
-  margin: auto;
-  padding: 40px 0;
+@import "compass";
+@import "variables";
+
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin:0; padding:0; }
+
+html {
+  height: 100%;
+}
+
+body {
+  background: $body-bg-color;
+  height: 100%;
+
+  &.fullscreen {
+    .bg {
+      background-image: image-url('skyline-compressed.jpg');
+      background-position: 50% bottom;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+  }
 }
 
 .edit-bar {
   margin-bottom: 10px;
 }
+
 form {
   .checkboxes,
   .input.date,
@@ -30,4 +54,130 @@ form {
   }
 }
 
-  @import "users";
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+#mast-nav,
+#main-container {
+  .inner {
+    width: 960px;
+    margin: auto;
+  }
+}
+
+#mast-nav {
+  background: #222;
+  color: #FFF;
+  font-size: 26px;
+  position: relative;
+
+  .brand {
+    font-weight: bold;
+    font-size: 26px;
+    padding: 10px 0;
+    display: inline-block;
+    color: #FFF;
+  }
+  .alpha {
+    margin: 0 0 0 10px;
+    position: relative;
+    top: -10px;
+    font-size: 12px;
+    cursor: default;
+  }
+  .dropdown {
+    float: right;
+    position: relative;
+    height: 46px;
+
+    .name {
+      background: #222;
+      font-size: 24px;
+      font-size: 2.4rem;
+      color: #FFF;
+      padding: 10px 35px 0 12px;
+      position: relative;
+
+      .icon-chevron-down {
+        position: absolute;
+        font-size: 16px;
+        font-size: 1.6rem;
+        top: 15px;
+        right: 10px;
+      }
+    }
+    .menu {
+      position: absolute;
+      top: 40px;
+      right: 0px;
+      background: #222;
+      width: 100%;
+      display: none;
+      z-index: 1000;
+
+      li {
+        width: 100%;
+      }
+    }
+    .divider {
+      border-bottom: 1px solid #FFF;
+      margin: 5px 0;
+    }
+    &:hover {
+      .name {
+        cursor: default;
+        color: red;
+      }
+      .menu {
+        display: block;
+      }
+    }
+  }
+}
+
+.dropdown {
+  .menu {
+    padding: 5px 0;
+  }
+  li {
+    a {
+      padding: 5px 10px;
+      display: block;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      color: #FFF;
+
+      &:hover {
+        color: #222;
+        background: #F9F9F9;
+        border-color: red;
+      }
+    }
+  }
+}
+
+#sidebar {
+  width: $sidebar-width;
+  height: 100px;
+  margin-left: -1 * $sidebar-width;
+  float: left;
+}
+
+#main-content {
+  padding-left: $sidebar-width;
+}
+
+.cover-image {
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@import "splash";
+@import "positions";
+@import "users";

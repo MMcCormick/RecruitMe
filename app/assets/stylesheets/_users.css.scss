@@ -1,0 +1,65 @@
+#users-show {
+
+  #sidebar {
+
+
+    .bubbles {
+      margin: 40px 0 0 10px;
+    }
+    .industry,
+    .location {
+      .bubble {
+        @include border-radius(1000px);
+        display: table-cell;
+        vertical-align: middle;
+        border: 2px solid $body-bg-color;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: default;
+        color: $body-bg-color;
+        text-align: center;
+        line-height: 25px;
+      }
+    }
+    .industry {
+      margin: 0 0 -40px 70px;
+      position: relative;
+      z-index: 50;
+
+      .bubble {
+        background: $blue;
+        width: 120px;
+        height: 120px;
+        padding: 10px;
+      }
+    }
+    .location {
+      margin: 0;
+      .bubble {
+        background: $green;
+        width: 200px;
+        height: 200px;
+        padding: 15px;
+      }
+    }
+  }
+
+  .user-header {
+    color: #FFF;
+    background: #777;
+    background-image: image-url('squaresBG.png');
+    padding: 25px;
+
+    h1 {
+      font-size: 40px;
+      color: #FFF;
+      margin: 0;
+      padding: 0;
+    }
+    .status {
+      font-size: 22px;
+      margin: 5px 0 0 0;
+    }
+  }
+
+}

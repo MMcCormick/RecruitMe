@@ -1,21 +1,44 @@
 DOCTYPE html
 html
-  head
-    title RecruitMe
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
+  = render :partial => "shared/head"
 
   body id="#{params[:controller]}-#{params[:action]}"
 
-    .container
-      - if notice
-        .alert-box
-          = notice
-          a href="" class="close" &times;
-      - if alert
-        .alert.alert-box
-          = alert
-          a href="" class="close" &times;
+    #mast-nav
+      .inner
+        a.brand href=root_path RecruitMe
+        span.alpha Alpha
+        .dropdown
+          .name
+            = "Hi #{current_user.first_name}"
+            i.icon-chevron-down
+          .menu
+            ul
+              li
+                a href=user_path My Profile
+              li
+                a href=edit_user_path Edit Profile
+              li.logout
+                a href=destroy_user_session_url Logout
+              li.divider
+              li
+                a href="#" About
 
-      = yield
+    #main-container
+      .inner
+        #main-content
+          #sidebar
+            = yield :sidebar
+
+          - if notice
+            .alert-box
+              = notice
+              a href="" class="close" &times;
+          - if alert
+            .alert.alert-box
+              = alert
+              a href="" class="close" &times;
+
+          = yield
+
+    = javascript_include_tag "application"
