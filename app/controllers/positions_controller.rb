@@ -24,6 +24,7 @@ class PositionsController < ApplicationController
   # GET /positions/new
   # GET /positions/new.json
   def new
+    authorize! :create, Position
     @position = Position.new
 
     respond_to do |format|
@@ -41,11 +42,12 @@ class PositionsController < ApplicationController
   # POST /positions
   # POST /positions.json
   def create
+    authorize! :create, Position
     @position = current_user.positions.new(params[:position])
 
     respond_to do |format|
       if @position.save
-        format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Position was successfully created.' }
         format.json { render json: @position, status: :created, location: @position }
       else
         format.html { render action: "new" }
@@ -62,7 +64,7 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.update_attributes(params[:position])
-        format.html { redirect_to @position, notice: 'Position was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Position was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,7 +82,7 @@ class PositionsController < ApplicationController
     @position.destroy
 
     respond_to do |format|
-      format.html { redirect_to positions_url }
+      format.html { redirect_to user_path(current_user) }
       format.json { head :no_content }
     end
   end
