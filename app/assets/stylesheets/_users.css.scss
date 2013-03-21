@@ -49,6 +49,7 @@
     background: #777;
     background-image: image-url('squaresBG.png');
     padding: 25px;
+    margin: 0 0 20px;
 
     h1 {
       font-size: 36px;
@@ -60,6 +61,32 @@
     .status {
       font-size: 22px;
       margin: 5px 0 0 0;
+    }
+  }
+
+  .user-content {
+    position: relative;
+    h3 {
+      color: #333;
+    }
+    div {
+      font-size: 20px;
+      color: #333;
+      line-height: 22px;
+    }
+    >.edit-bar {
+      position: absolute;
+      right: 25px;
+      top: 21px;
+    }
+    .section {
+      margin: 0 0 20px;
+      padding: 5px 25px;
+    }
+    .dream-job {
+      >div {
+        margin-bottom: 10px;
+      }
     }
   }
 

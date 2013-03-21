@@ -8,7 +8,7 @@
     .checkboxes
       == f.collection_radio_buttons :interest_level, User.interest_levels, :to_s, :to_s do |b|
         - b.label { b.radio_button + b.text.html_safe }
-  = f.input :dream_salary, collection: User.dream_salaries.map{|s| [number_to_currency(s), s]} unless @user.dream_salary && defined?(blank_only)
+  = f.input :dream_salary, collection: User.dream_salaries.map{|s| [number_to_currency(s, :precision => 0), s]} unless @user.dream_salary && defined?(blank_only)
   = f.input :dream_size, collection: User.company_sizes unless @user.dream_size && defined?(blank_only)
   = f.input :dream_move unless @user.dream_move && defined?(blank_only)
   = f.input :dream_management unless @user.dream_management && defined?(blank_only)

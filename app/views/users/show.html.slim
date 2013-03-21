@@ -15,16 +15,29 @@
   h1 Codename: #{@user.codename}
   .status == @user.interest_level_sentence
 
-- if @user == current_user
-  .edit-bar
-    div = link_to 'Edit Basic Info', edit_user_path(@user)
+.user-content
+  - if @user == current_user
+    .edit-bar
+      div = link_to 'Edit Basic Info', edit_user_path(@user)
 
-.section.positions
-  .head
-    h3 Experience
-    - if @user == current_user
-      .edit-bar
-        = link_to "New Position", new_position_path
-  .content
-    ul
-      = render :partial => 'positions/position', :collection => @user.positions
+  - if @user.dream_salary || !@user.dream_move.nil? || @user.dream_size
+    .section.dream-job
+      h3 What I'm Looking For
+      - unless @user.dream_move.nil?
+        div Minimum Salary: #{number_to_currency(@user.dream_salary, :precision => 0)}
+      - unless @user.dream_move.nil?
+        div I #{@user.dream_move ? "AM" : "am NOT"} willing to relocate.
+      - unless @user.dream_management.nil?
+        div I would like to be in a managerial position
+      - unless @user.dream_size.blank?
+        div I would like to work at a company with #{@user.dream_size} employees
+
+  .section.positions
+    .head
+      h3 Experience
+      - if @user == current_user
+        .edit-bar
+          = link_to "New Position", new_position_path
+    .content
+      ul
+        = render :partial => 'positions/position', :collection => @user.positions
