@@ -191,7 +191,7 @@ ul {
     &:hover {
       .name {
         cursor: default;
-        color: red;
+        color: $green;
       }
       .menu {
         display: block;
@@ -215,7 +215,7 @@ ul {
       &:hover {
         color: #222;
         background: #F9F9F9;
-        border-color: red;
+        border-color: $green;
       }
     }
   }
