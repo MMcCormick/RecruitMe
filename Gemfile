@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
+gem 'bundler'
 gem 'rails', '3.2.13'
 
 gem 'pg'
@@ -11,6 +14,9 @@ gem 'slim'
 gem 'zurb-foundation', '~> 3.2.5'
 gem 'simple_form'
 gem 'cancan'
+
+gem 'capistrano'
+gem 'foreman'
 
 # Gems used only for assets and not required
 # in production environments by default.
