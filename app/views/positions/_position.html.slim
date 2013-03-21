@@ -1,12 +1,18 @@
-li
-  .description This is the position one liner
+li.position
+  .description
+    = position.title ? "#{position.title} at a " : ""
+    = position.company_type ? "#{position.company_type} " : ""
+    = position.company_industry ? "#{position.company_industry} " : ""
+    = "company"
+    | #{position.company_size ? " with #{position.company_size}" : ""}.
   .bottom
     - if position.total_time
       span.time= time_in_months(position.total_time)
     - if position.is_current
-      .current currently employed
+      span.current= " - currently employed"
 
   - if @user == current_user
     .edit-bar
-      div = link_to 'Edit', edit_position_path(position)
-      div = link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete
+      span = link_to 'Edit', edit_position_path(position)
+      = " | "
+      span = link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete

@@ -30,14 +30,14 @@
       - unless @user.dream_management.nil?
         div I would like to be in a managerial position
       - unless @user.dream_size.blank?
-        div I would like to work at a company with #{@user.dream_size} employees
+        div I would like to work at a company with #{@user.dream_size}
 
   .section.positions
+    - if @user == current_user
+      .edit-bar
+        = link_to "New Position", new_position_path
     .head
       h3 Experience
-      - if @user == current_user
-        .edit-bar
-          = link_to "New Position", new_position_path
     .content
       ul
         = render :partial => 'positions/position', :collection => @user.positions

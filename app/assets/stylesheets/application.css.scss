@@ -105,7 +105,9 @@ form {
   .input.boolean {
     margin-bottom: 12px;
   }
-  .checkboxes {
+  .checkboxes input,
+  .checkbox input {
+    margin-right: 10px;
   }
   .input {
     margin-bottom: 10px;

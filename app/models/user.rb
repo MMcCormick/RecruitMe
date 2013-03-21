@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
   @interest_levels = ['Active', 'Passive', 'Dream Job Only', 'Hidden']
   @dream_salaries = [20000, 30000, 40000, 50000, 60000, 80000, 100000, 120000, 140000, 160000, 200000]
-  @company_sizes = ['1-10', '11-50', '51-100', '101-500', '501+']
+  @company_sizes = ['1-10 employees', '11-50 employees', '51-100 employees', '101-500 employees', '501+ employees']
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
