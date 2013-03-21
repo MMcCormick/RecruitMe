@@ -72,6 +72,19 @@ class User < ActiveRecord::Base
     @company_sizes
   end
 
+  def interest_level_sentence
+    case interest_level
+      when "Active"
+        "I am ACTIVELY looking for a job"
+      when "Passive"
+        "I am PASSIVELY looking for a job"
+      when "Dream Job Only"
+        "I would only be interested in my DREAM JOB"
+      else
+        "I am not interested in a job right now"
+    end
+  end
+
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     # Just for testing
     #user = User.where(:provider => auth.provider, :uid => auth.uid).first
