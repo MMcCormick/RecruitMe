@@ -28,11 +28,11 @@ set :bundle_without, [:development, :test]
 set :rake, "#{rake} --trace"
 
 set :default_environment, {
-    'PATH' => "/usr/local/rvm/gems/ruby-1.9.3-p392/bin:/usr/local/rvm/gems/ruby-1.9.3-p392@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p392/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
-    'RUBY_VERSION' => 'ruby 1.9.3',
-    'GEM_HOME'     => '/usr/local/rvm/gems/ruby-1.9.3-p392@RecruitMe',
-    'GEM_PATH'     => '/usr/local/rvm/gems/ruby-1.9.3-p392:/usr/local/rvm/gems/ruby-1.9.3-p392@global:/usr/local/rvm/gems/ruby-1.9.3-p392@RecruitMe',
-    'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-1.9.3-p392@RecruitMe'  # If you are using bundler.
+    'PATH' => "/usr/local/rvm/gems/ruby-2.0.0-p0@RecruitMe/bin:/usr/local/rvm/gems/ruby-2.0.0-p0@global/bin:/usr/local/rvm/rubies/ruby-2.0.0-p0/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games",
+    'RUBY_VERSION' => 'ruby 2.0.0',
+    'GEM_HOME'     => '/usr/local/rvm/gems/ruby-2.0.0-p0@RecruitMe',
+    'GEM_PATH'     => '/usr/local/rvm/gems/ruby-2.0.0-p0@RecruitMe:/usr/local/rvm/gems/ruby-2.0.0-p0@global',
+    'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-2.0.0-p0@RecruitMe'  # If you are using bundler.
 }
 
 namespace :deploy do
