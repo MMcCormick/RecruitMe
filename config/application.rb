@@ -60,5 +60,14 @@ module RecruitMe
     config.assets.version = '1.0'
 
     config.assets.precompile += ['modernizr.js']
+
+    # Thanks to http://stackoverflow.com/questions/4982073
+    config.to_prepare do
+      Devise::SessionsController.layout "fullscreen"
+      Devise::RegistrationsController.layout "fullscreen"
+      Devise::ConfirmationsController.layout "fullscreen"
+      Devise::UnlocksController.layout "fullscreen"
+      Devise::PasswordsController.layout "fullscreen"
+    end
   end
 end

@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
   after_create :assign_codename
 
   def first_name
-    name.split(' ').first
+    name ? name.split(' ').first : nil
   end
 
   def assign_codename

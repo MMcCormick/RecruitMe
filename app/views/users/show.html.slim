@@ -1,5 +1,4 @@
 - content_for :sidebar do
-
   .bubbles
     - if @user.industry
       .industry
@@ -10,6 +9,10 @@
       .location
         .bubble
           = @user.location_name
+
+.alert-box
+  | This is your profile as recruiters will see it. Please edit it accordingly.
+  a href="" class="close" &times;
 
 .user-header
   h1 Codename: #{@user.codename}
@@ -39,5 +42,7 @@
     .head
       h3 Experience
     .content
+      - if @user == current_user
+        .empty You haven't listed any experience! Click "New Position" above to add a position.
       ul
         = render :partial => 'positions/position', :collection => @user.positions

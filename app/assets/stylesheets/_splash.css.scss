@@ -25,12 +25,16 @@
     color: #FFF;
     display: inline-block;
     font-size: 24px;
-    margin: 30px 0;
+    margin: 30px 0 10px;
     padding: 8px 20px;
 
     &:hover {
       background: darken($linkedin-color, 5%);
     }
+  }
+  .sign-in-sign-up {
+    font-size: 18px;
+    margin: 10px 0 30px;
   }
   h3 {
     font-size: 24px;

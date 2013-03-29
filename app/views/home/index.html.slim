@@ -1,7 +1,13 @@
 .splash-container
   h1 RecruitMe
   h2 Flirt with your dream job.
-  = link_to "Connect with Linkedin", user_omniauth_authorize_path(:linkedin), :class => 'linkedin'
+  .login-links
+    = link_to "Connect with Linkedin", user_omniauth_authorize_path(:linkedin), :class => 'linkedin'
+    .or - or -
+    .sign-in-sign-up
+      = link_to "Sign in", new_user_session_path
+      = " / "
+      = link_to "Sign Up", new_user_registration_path
 
   .values
     div

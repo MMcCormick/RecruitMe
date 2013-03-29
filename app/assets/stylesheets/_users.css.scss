@@ -73,6 +73,11 @@
       color: #333;
       line-height: 22px;
     }
+    .empty {
+      font-size: 16px;
+      color: #666;
+      font-style: italic;
+    }
     >.edit-bar {
       position: absolute;
       right: 25px;
@@ -118,6 +123,43 @@
           right: 0;
           margin: 0;
         }
+      }
+    }
+  }
+}
+
+.devise-screen {
+  padding: 50px 0 20px;
+  #main-container {
+    @include box-shadow(rgba(0, 0, 0, 0.20) 0 1px 2px);
+    background: #FFF;
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px 30px 30px;
+    form {
+      input {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .checkbox-group {
+        @include clearfix();
+        input {
+          width: auto;
+          float: left;
+          margin-right: 10px;
+        }
+        label {
+          margin-bottom: 20px;
+        }
+      }
+      .button {
+        width: auto;
+      }
+    }
+    #devise-links {
+      >a {
+        display: inline-block;
+        padding-right: 20px;
       }
     }
   }

@@ -2,7 +2,7 @@ DOCTYPE html
 html
   = render :partial => "shared/head"
 
-  body.fullscreen id="#{params[:controller]}-#{params[:action]}"
+  body.fullscreen id="#{params[:controller]}-#{params[:action]}" class="#{'devise-screen' if params[:controller].split('/').first == "devise"}"
 
     #main-container
       - if notice

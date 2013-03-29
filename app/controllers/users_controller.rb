@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    flash[:notice] = "This is your profile as recruiters will see it. Please edit it accordingly." if @user == current_user && !flash[:notice]
 
     respond_to do |format|
       format.html # show.html.erb
